@@ -3,21 +3,31 @@ using System;
 public class Solution {
     public int solution(int number, int limit, int power) {
         int answer = 0;
-        int[] cnt = new int[number + 1];
+        int[] weight = new int[number + 1];
         for(int i = 1; i <= number; i++)
         {
-            for(int j = i; j <= number; j += i)
+            for(int j = 1; j*j <= i; j++)
             {
-                cnt[j]++;
+                if (i % j == 0)
+                {
+                    if (i / j == j)
+                    {
+                        weight[i]++;
+                    }
+                    else
+                    {
+                        weight[i] += 2;
+                    }
+                }
             }
         }
         
         for(int i = 1; i <= number; i++)
         {
-            if(cnt[i] > limit)
+            if(weight[i] > limit)
                 answer += power;
             else
-                answer += cnt[i];
+                answer += weight[i];
         }
         
         return answer;
