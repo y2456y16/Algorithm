@@ -6,7 +6,11 @@ public class Solution {
         Array.Sort(strings, (a, b) =>
         {
             int c = a[n].CompareTo(b[n]);
-            if (c == 0) { return a.CompareTo(b); }
+            if (c == 0) 
+            { 
+                return a.CompareTo(b); 
+            }
+            
             return c;
         });
         
